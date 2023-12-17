@@ -4,16 +4,23 @@ import Image from 'next/image';
 import React from 'react';
 
 type ProductCardProps = {
-  loading: boolean;
   data: TProducts;
 };
 
-export const ProductCard = ({ loading, data }: ProductCardProps) => {
+export const ProductCard = ({ data }: ProductCardProps) => {
   return (
     <CardWrapper>
       <div className="w-full flex flex-col gap-1">
         <div className="w-full relative h-48 overflow-hidden rounded-md">
-          <Image alt={data.title} src={data.thumbnail} fill sizes="500" className="object-cover" />
+          <Image
+            alt={data.title}
+            src={data.thumbnail}
+            fill
+            sizes="100vh"
+            priority
+            className="object-cover transition-opacity opacity-0 duration-[2s]"
+            onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
+          />
           <div className="absolute right-1 top-1 rounded bg-yellow-200 shadow text-primary leading-none p-1 text-xs font-bold">
             {data.discountPercentage}%
           </div>

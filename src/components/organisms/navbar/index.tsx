@@ -15,7 +15,7 @@ export const Navbar = ({ data }: NavbarProps) => {
         {/* <Image /> */}
         <div className="flex gap-2 items-center cursor-pointer">
           <div className="w-12 h-12 overflow-hidden shadow-md rounded-full relative">
-            {data ? <Image alt="user" src={data.user.data.image} fill /> : null}
+            {data ? <Image alt="user" src={data.user.data.image} fill sizes="100vh" /> : null}
           </div>
           <div>
             <p className="font-semibold">{data?.user.data.username}</p>
