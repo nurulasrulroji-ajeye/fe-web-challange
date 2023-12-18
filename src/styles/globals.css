@@ -5,3 +5,8 @@
 .btn-primary {
     @apply outline-none bg-primary text-white hover:bg-primary/90 transition-all ease-in-out duration-500 disabled:bg-primary/60;
 }
+
+.slick-prev:before,
+.slick-next:before{
+    @apply hidden
+}

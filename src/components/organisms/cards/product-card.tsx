@@ -10,7 +10,7 @@ type ProductCardProps = {
 export const ProductCard = ({ data }: ProductCardProps) => {
   return (
     <CardWrapper>
-      <div className="w-full flex flex-col gap-1">
+      <div onClick={() => console.log(data.id)} className="w-full flex flex-col gap-1">
         <div className="w-full relative h-48 overflow-hidden rounded-md">
           <Image
             alt={data.title}

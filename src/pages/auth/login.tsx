@@ -63,6 +63,9 @@ const LoginPage: LoginPageProps = ({ csrfToken }) => {
             <div className="w-full flex flex-col gap-1">
               <label htmlFor="user-id">User ID</label>
               <Input
+                variant="line"
+                color="primary"
+                size_variant="sm"
                 id="user-id"
                 type="text"
                 placeholder="User ID"
@@ -78,6 +81,9 @@ const LoginPage: LoginPageProps = ({ csrfToken }) => {
               <div className="w-full relative">
                 <Input
                   id="password"
+                  variant="line"
+                  color="primary"
+                  size_variant="sm"
                   type={showPass ? 'text' : 'password'}
                   placeholder="Password"
                   value={input.password}

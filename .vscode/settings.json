@@ -1,0 +1,17 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "typescript"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "/\\*\\s*tw\\s*\\*/\\s*'([^']*)'",
+    "/\\*\\s*tw\\s*\\*/\\s*\"([^\"]*)\""
+  ],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.rulers": [120],
+  "editor.renderWhitespace": "boundary",
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "files.encoding": "utf8",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true
+}
