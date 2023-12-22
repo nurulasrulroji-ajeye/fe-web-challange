@@ -1,20 +1,18 @@
 import { useEffect, useRef } from "react";
 
 type InfiniteScrollProps = {
-  isFetching: boolean,
-  total_data: number,
-  current_total: number,
-  onLoadMore: () => void
+  isLoadMoreRule: boolean;
+  onLoadMore: () => void;
 }
 
-export function useInfiniteScroll({ current_total, isFetching, onLoadMore, total_data }: InfiniteScrollProps) {
+export function useInfiniteScroll({ onLoadMore, isLoadMoreRule }: InfiniteScrollProps) {
   const scrollTargetDivRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         let target = entries[0];
-        if (target.isIntersecting && !isFetching && current_total !== total_data) {
+        if (target.isIntersecting && isLoadMoreRule) {
           onLoadMore();
         }
       },
@@ -31,7 +29,7 @@ export function useInfiniteScroll({ current_total, isFetching, onLoadMore, total
         observer.unobserve(scrollTargetDivRef.current);
       }
     };
-  }, [isFetching, scrollTargetDivRef, current_total, total_data, onLoadMore]);
+  }, [scrollTargetDivRef, onLoadMore, isLoadMoreRule]);
 
   return {
     scrollTargetDivRef

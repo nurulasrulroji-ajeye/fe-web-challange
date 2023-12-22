@@ -26,8 +26,29 @@ export const productQueries = createApi({
       forceRefetch({ currentArg, previousArg }) {
         return currentArg !== previousArg;
       }
-    })
+    }),
+    getSearchProducts: build.query<IResponseProaduct<TProducts[]>, { page: number; search: string }>({
+      queryFn: async (params) => {
+        const { search, page } = params;
+        const response = await productServices.getAllProduct({ limit: 12, search, skip: page * 12 })
+        return {
+          data: response,
+        }
+      },
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+      merge: (currentCache, newItems, otherArgs) => {
+        console.log("current", currentCache.skip);
+        if (currentCache.skip > 0) {
+          currentCache.products.push(...newItems.products)
+        }
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      }
+    }),
   }),
 })
 
-export const { useGetProductsQuery } = productQueries
+export const { useGetProductsQuery, useGetSearchProductsQuery } = productQueries
